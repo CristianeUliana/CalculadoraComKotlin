@@ -1,5 +1,6 @@
 package com.example.calculadoracomkotlin
 
+import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -9,7 +10,7 @@ import java.lang.NumberFormatException
 
 class MainActivity : AppCompatActivity(), View.OnClickListener {
 
-
+    var operacao: String? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -23,8 +24,6 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         button_resultado.setOnClickListener(this)
 
     }
-
-    var operacao: String? = null
 
     override fun onClick(v: View?) {
 
@@ -49,10 +48,10 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                 text_resultado.text = ("Informe os números a serem calculados")
             } else {
                 when (operacao) {
-                    "soma" -> text_resultado.text = soma(num1, num2).toString()
-                    "subtracao" -> text_resultado.text = subtracao(num1, num2).toString()
-                    "multiplicacao" -> text_resultado.text = multiplicacao(num1, num2).toString()
-                    "divisao" -> text_resultado.text = divisao(num1, num2).toString()
+                    "soma" -> text_resultado.text = ("$num1 + $num2 = ${soma(num1,num2).toString()}")
+                    "subtracao" -> text_resultado.text = ("$num1 - $num2 = ${subtracao(num1, num2).toString()}")
+                    "multiplicacao" -> text_resultado.text = ("$num1 x $num2 = ${multiplicacao(num1, num2).toString()}")
+                    "divisao" -> text_resultado.text = ("$num1 / $num2 = ${divisao(num1, num2).toString()}")
                 }
 
                 operacao = null
@@ -60,10 +59,9 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         } else if (v?.id == R.id.button_resultado && operacao == null) {
             text_resultado.text = ("Informe o tipo de operação desejada")
         }
-
     }
 
-    private fun getNumber(num: String) : Float? {
+    private fun getNumber(num: String): Float? {
         try {
             return num.toFloat()
         } catch (ex: NumberFormatException) {
@@ -71,16 +69,19 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         }
     }
 
-    private fun soma(first: Float, second: Float) : Float {
+    private fun soma(first: Float, second: Float): Float {
         return first + second
     }
-    private fun subtracao(first: Float, second: Float) : Float {
+
+    private fun subtracao(first: Float, second: Float): Float {
         return first - second
     }
-    private fun multiplicacao(first: Float, second: Float) : Float {
+
+    private fun multiplicacao(first: Float, second: Float): Float {
         return first * second
     }
-    private fun divisao(first: Float, second: Float) : Float {
+
+    private fun divisao(first: Float, second: Float): Float {
         return first / second
     }
 }

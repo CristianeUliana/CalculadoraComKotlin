@@ -1,133 +1,121 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
-    android:orientation="vertical"
-    android:padding="10dp"
     tools:context=".MainActivity">
 
     <TextView
         android:id="@+id/text_titulo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginBottom="10dp"
+        android:padding="20dp"
         android:text="@string/calculadora"
         android:textColor="@color/purple_500"
         android:textSize="25sp"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <View
+        android:id="@+id/view_line"
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:background="@color/purple_200" />
+        android:background="@color/purple_200"
+        app:layout_constraintBottom_toBottomOf="@id/text_titulo"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent" />
 
     <TextView
         android:id="@+id/text_insira"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
         android:gravity="center"
+        android:padding="10dp"
         android:text="@string/insira_num"
         android:textColor="@color/purple_200"
-        android:textSize="15sp" />
+        android:textSize="15sp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/view_line" />
 
     <EditText
         android:id="@+id/text_num1"
-        android:layout_width="200dp"
-        android:layout_height="40dp"
-        android:layout_gravity="center"
-        android:layout_marginTop="20dp"
-        android:gravity="center"
+        style="@style/numbers"
         android:hint="@string/num1"
-        android:inputType="numberDecimal"
-        android:textColor="@color/purple_200"
-        android:textColorHint="@color/purple_200"
+        app:layout_constraintBottom_toBottomOf="@+id/button_soma"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/text_insira" />
 
-        />
+    <Button
+        android:id="@+id/button_soma"
+        android:text="@string/plus"
+        style="@style/buttons"
+        app:layout_constraintBottom_toBottomOf="@id/text_num2"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@id/button_subtracao"
+        app:layout_constraintTop_toTopOf="@+id/text_num1" />
 
+    <Button
+        android:id="@+id/button_subtracao"
+        style="@style/buttons"
+        android:text="@string/minus"
+        app:layout_constraintBottom_toBottomOf="@id/text_num2"
+        app:layout_constraintLeft_toRightOf="@+id/button_soma"
+        app:layout_constraintRight_toRightOf="@id/button_multiplicacao"
+        app:layout_constraintTop_toTopOf="@+id/text_num1" />
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:orientation="horizontal"
+    <Button
+        android:id="@+id/button_multiplicacao"
+        style="@style/buttons"
+        android:text="@string/x"
+        app:layout_constraintBottom_toBottomOf="@id/text_num2"
+        app:layout_constraintLeft_toRightOf="@+id/button_subtracao"
+        app:layout_constraintRight_toLeftOf="@id/button_divisao"
+        app:layout_constraintTop_toTopOf="@+id/text_num1" />
 
-        tools:context=".MainActivity">
-
-        <Button
-            android:id="@+id/button_soma"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="5dp"
-            android:layout_marginRight="5dp"
-            android:layout_weight="1"
-            android:text="@string/plus"
-            android:textSize="20sp" />
-
-        <Button
-            android:id="@+id/button_subtracao"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="5dp"
-            android:layout_marginRight="5dp"
-            android:layout_weight="1"
-            android:text="@string/minus"
-            android:textSize="20sp" />
-
-        <Button
-            android:id="@+id/button_multiplicacao"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="5dp"
-            android:layout_marginRight="5dp"
-            android:layout_weight="1"
-            android:text="@string/x"
-            android:textSize="20sp" />
-
-        <Button
-            android:id="@+id/button_divisao"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="5dp"
-            android:layout_marginRight="5dp"
-            android:layout_weight="1"
-            android:text="@string/div"
-            android:textSize="20sp" />
-    </LinearLayout>
+    <Button
+        android:id="@+id/button_divisao"
+        style="@style/buttons"
+        android:text="@string/div"
+        app:layout_constraintBottom_toBottomOf="@id/text_num2"
+        app:layout_constraintLeft_toRightOf="@id/button_multiplicacao"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/text_num1" />
 
     <EditText
         android:id="@+id/text_num2"
-        android:layout_width="200dp"
-        android:layout_height="40dp"
-        android:layout_gravity="center"
-        android:layout_marginTop="20dp"
-        android:gravity="center"
+        style="@style/numbers"
         android:hint="@string/num2"
-        android:inputType="numberDecimal"
-        android:textColor="@color/purple_200"
-        android:textColorHint="@color/purple_200" />
+        app:layout_constraintBottom_toBottomOf="@id/button_resultado"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/button_soma" />
 
     <Button
         android:id="@+id/button_resultado"
-        android:layout_width="120dp"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginTop="10dp"
+        style="@style/buttons"
         android:text="@string/equal"
-        android:textSize="30sp" />
+        app:layout_constraintBottom_toBottomOf="@id/text_resultado"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/text_num2" />
 
     <TextView
         android:id="@+id/text_resultado"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginTop="20dp"
         android:gravity="center"
         android:text=""
         android:textColor="@color/purple_700"
-        android:textSize="40sp" />
+        android:textSize="30sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/button_resultado" />
 
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

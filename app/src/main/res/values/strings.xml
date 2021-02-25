@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">CalculadoraComKotlin</string>
+    <string name="insira_num">Insira os números a serem calculados e escolha a operação matemática que deseja realizar:</string>
+    <string name="num1">primeiro número</string>
+    <string name="num2">segundo número</string>
+    <string name="calculadora">Calculadora</string>
+    <string name="plus">+</string>
+    <string name="minus">-</string>
+    <string name="x">x</string>
+    <string name="div">/</string>
+    <string name="equal">=</string>
+</resources>
